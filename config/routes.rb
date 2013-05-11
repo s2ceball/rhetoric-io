@@ -1,6 +1,12 @@
 Rhetoricio::Application.routes.draw do
 
 
+  # Sessions paths for logging in/out, handling OmniAuth callbacks
+  get '/login', to: 'sessions#new', as: 'login'
+  match '/auth/:provider/callback', to: 'sessions#create'
+  match '/auth/failure', to: 'sessions#failure'
+  get '/logout', to: 'sessions#destroy', as: 'logout'
+
   resources :datasets
 
 
