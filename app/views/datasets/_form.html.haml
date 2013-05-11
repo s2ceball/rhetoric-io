@@ -1,0 +1,58 @@
+= form_for @dataset do |f|
+  - if @dataset.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@dataset.errors.count, "error")} prohibited this dataset from being saved:"
+      %ul
+        - @dataset.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :researchers
+    = f.text_field :researchers
+  .field
+    = f.label :url
+    = f.text_field :url
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.label :purpose
+    = f.text_area :purpose
+  .field
+    = f.label :audience
+    = f.text_area :audience
+  .field
+    = f.label :format
+    = f.text_field :format
+  .field
+    = f.label :location
+    = f.text_field :location
+  .field
+    = f.label :need_storage
+    = f.check_box :need_storage
+  .field
+    = f.label :need_digitization
+    = f.check_box :need_digitization
+  .field
+    = f.label :complete
+    = f.check_box :complete
+  .field
+    = f.label :date_range
+    = f.text_field :date_range
+  .field
+    = f.label :collection_rate
+    = f.text_field :collection_rate
+  .field
+    = f.label :interest
+    = f.check_box :interest
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.label :join_email_list
+    = f.check_box :join_email_list
+  .actions
+    = f.submit 'Save'

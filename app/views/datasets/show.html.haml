@@ -1,0 +1,54 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @dataset.title
+%p
+  %b Researchers:
+  = @dataset.researchers
+%p
+  %b Url:
+  = @dataset.url
+%p
+  %b Description:
+  = @dataset.description
+%p
+  %b Purpose:
+  = @dataset.purpose
+%p
+  %b Audience:
+  = @dataset.audience
+%p
+  %b Format:
+  = @dataset.format
+%p
+  %b Location:
+  = @dataset.location
+%p
+  %b Need storage:
+  = @dataset.need_storage
+%p
+  %b Need digitization:
+  = @dataset.need_digitization
+%p
+  %b Complete:
+  = @dataset.complete
+%p
+  %b Date range:
+  = @dataset.date_range
+%p
+  %b Collection rate:
+  = @dataset.collection_rate
+%p
+  %b Interest:
+  = @dataset.interest
+%p
+  %b Email:
+  = @dataset.email
+%p
+  %b Join email list:
+  = @dataset.join_email_list
+
+= link_to 'Edit', edit_dataset_path(@dataset)
+\|
+= link_to 'Back', datasets_path
