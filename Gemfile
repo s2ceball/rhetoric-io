@@ -24,6 +24,9 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
+  # Load up Twitter boostrap c/o
+  # https://github.com/yabawock/bootstrap-sass-rails
+  gem 'bootstrap-sass-rails'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
