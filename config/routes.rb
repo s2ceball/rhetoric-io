@@ -9,6 +9,8 @@ Rhetoricio::Application.routes.draw do
 
   resources :datasets
 
+  root to: 'datasets#index'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
