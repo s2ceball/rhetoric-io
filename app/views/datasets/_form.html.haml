@@ -1,58 +1,92 @@
-= form_for @dataset do |f|
+= form_for @dataset, { html: { class: 'form-horizontal'} } do |f|
   - if @dataset.errors.any?
     #error_explanation
       %h2= "#{pluralize(@dataset.errors.count, "error")} prohibited this dataset from being saved:"
       %ul
         - @dataset.errors.full_messages.each do |msg|
           %li= msg
+  %fieldset
+    %legend Primary Project Information
+    %p.well This information will be displayed publically on the front-page listing of datasets on the rhetoric.io site.
+    .control-group
+      = f.label :title, class: 'control-label'
+      .controls
+        = f.text_field :title, class: 'span6'
+        %p.help-inline What is the title of this dataset/project?
+    .control-group
+      = f.label :researchers, class: 'control-label'
+      .controls
+        = f.text_field :researchers, class: 'span6'
+        %p.help-inline Who are the researchers involved? <b>Separate names with a semicolon.</b>
+    .control-group
+      = f.label :url, 'URL', class: 'control-label'
+      .controls
+        = f.text_field :url, class: 'span6'
+        %p.help-inline If there is a web address for this dataset/project, enter it here with the http:// prefix.
+    .control-group
+      = f.label :description, class: 'control-label'
+      .controls
+        = f.text_area :description, class: 'span6', rows: 6
+        %p.help-inline Describe the data you've collected.
+  %fieldset
+    %legend Project Metadata
+    %p.well This is information is used to help build the rhetoric.io site and provide direction to the project.
 
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :researchers
-    = f.text_field :researchers
-  .field
-    = f.label :url
-    = f.text_field :url
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :purpose
-    = f.text_area :purpose
-  .field
-    = f.label :audience
-    = f.text_area :audience
-  .field
-    = f.label :format
-    = f.text_field :format
-  .field
-    = f.label :location
-    = f.text_field :location
-  .field
-    = f.label :need_storage
-    = f.check_box :need_storage
-  .field
-    = f.label :need_digitization
-    = f.check_box :need_digitization
-  .field
-    = f.label :complete
-    = f.check_box :complete
-  .field
-    = f.label :date_range
-    = f.text_field :date_range
-  .field
-    = f.label :collection_rate
-    = f.text_field :collection_rate
-  .field
-    = f.label :interest
-    = f.check_box :interest
-  .field
-    = f.label :email
-    = f.text_field :email
-  .field
-    = f.label :join_email_list
-    = f.check_box :join_email_list
-  .actions
-    = f.submit 'Save'
+    .control-group
+      = f.label :purpose, class: 'control-label'
+      .controls
+        = f.text_area :purpose, class: 'span6', rows: 6
+        %p.help-inline Briefly describe the purpose behind this dataset/project.
+    .control-group
+      = f.label :audience, class: 'control-label'
+      .controls
+        = f.text_area :audience, class: 'span6', rows: 6
+        %p.help-inline Briefly describe the audience for this dataset/project (e.g., WPAs, composition instructors, technical communicators)
+    .control-group
+      = f.label :format, class: 'control-label'
+      .controls
+        = f.text_field :format, class: 'span4'
+        %p.help-inline What format is your dataset in (e.g., Excel file, MySQL database, pile of papers on your desk)?
+    .control-group
+      = f.label :location, class: 'control-label'
+      .controls
+        = f.text_field :location, class: 'span4'
+        %p.help-inline Where is your dataset located (e.g., a website, your harddrive, Dropbox)?
+    .control-group
+      .controls
+        %label.checkbox{for:"dataset_need_storage"}
+          = f.check_box :need_storage
+          I need permanent, electronic storage for my dataset.
+      .controls
+        %label.checkbox{for:"dataset_need_digitization"}
+          = f.check_box :need_digitization
+          I need help digitizing my dataset
+      .controls
+        %label.checkbox{for:"dataset_complete"}
+          = f.check_box :complete
+          This dataset is complete; no more data will be collected.
+    .control-group
+      = f.label :date_range, 'When was this data collected?', class: 'control-label'
+      .controls
+        = f.text_field :date_range, class: 'span2'
+        %p.help-inline For ongoing projects, enter the year collection began (e.g., <b>2012</b>); for completed projects, enter the year data collection began (and ending year if different, e.g., <b>1999-2001</b>).
+    .control-group
+      = f.label :collection_rate, 'How frequently is/was data added to your project?', class: 'control-label'
+      .controls
+        = f.text_field :collection_rate, class: 'span2'
+        %p.help-inline Enter how often you collect(ed) data (e.g., once, quarterly, daily, hourly).
+    .control-group
+      = f.label :email, 'Your Email Address', class: 'control-label'
+      .controls
+        = f.text_field :email
+    .control-group
+      .controls
+        %label.checkbox{for:"dataset_interest"}
+          = f.check_box :interest
+          I am interested in being involved with the development of the rhetoric.io project.
+      .controls
+        %label.checkbox{for:"dataset_join_email_list"}
+          = f.check_box :join_email_list
+          I would like to subscribe to the rhetoric.io email announcement and discussion list.
+  .actions.controls
+    = f.submit 'Save this Dataset', class: "btn btn-primary"
