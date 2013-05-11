@@ -1,4 +1,10 @@
 Rhetoricio::Application.routes.draw do
+  get "user/index"
+
+  get "user/edit"
+
+  get "user/update"
+
   get "sessions/new"
 
   get "sessions/create"
