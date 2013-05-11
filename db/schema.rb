@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130511161729) do
+ActiveRecord::Schema.define(:version => 20130511164549) do
+
+  create_table "authorizations", :force => true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "datasets", :force => true do |t|
     t.string   "title"
@@ -32,6 +40,18 @@ ActiveRecord::Schema.define(:version => 20130511161729) do
     t.boolean  "join_email_list"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.integer  "user_id"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "nickname"
+    t.string   "avatar"
+    t.string   "email"
+    t.string   "title"
+    t.string   "institution"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
 end
