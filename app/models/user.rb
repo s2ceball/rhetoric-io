@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
 
   has_many :authorizations
 
+  has_and_belongs_to_many :datasets
+
   def self.create_from_hash!(hash)
     create(name: hash['info']['name'], email: hash['info']['email'], nickname: hash['info']['nickname'], avatar: hash['info']['image'])
   end
