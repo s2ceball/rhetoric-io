@@ -45,7 +45,7 @@ class DatasetsController < ApplicationController
   def create
     @dataset = Dataset.new(params[:dataset])
     @user = User.find(current_user)
-    @dataset.user_id = @user.id
+    @dataset.users << @user
 
     respond_to do |format|
       if @dataset.save
