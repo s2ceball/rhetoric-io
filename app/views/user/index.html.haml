@@ -1,1 +1,11 @@
 %h1 Welcome, #{@user.name}!
+
+%h2 Your Datasets
+
+%ol
+  - @user.datasets.each do |d|
+    %li
+      =d.title
+      =link_to "Edit", edit_dataset_path(d), { class: "btn btn-primary btn-small" }
+
+%p=link_to "Add a New Dataset", new_dataset_path, { class: "btn btn-primary" }

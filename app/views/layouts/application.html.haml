@@ -20,6 +20,8 @@
             %ul.nav
               %li
                 = link_to 'Datasets', root_url
+              - if signed_in?
+                %li= link_to 'Dashboard', dashboard_path
               %li
                 - if signed_in?
                   = link_to 'Logout', logout_path
