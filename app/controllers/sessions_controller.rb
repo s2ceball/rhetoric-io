@@ -1,5 +1,11 @@
 class SessionsController < ApplicationController
+  before_filter :authenticate_user!
+  skip_before_filter :authenticate_user!, :only => [:new, :create]
+
   def new
+    if signed_in?
+      redirect_to dashboard_url
+    end
   end
 
   def create
@@ -17,5 +23,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    reset_session
+    redirect_to root_url, :notice => "Logged out!"
   end
 end
