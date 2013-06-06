@@ -1,4 +1,7 @@
 class DatasetsController < ApplicationController
+  before_filter :authenticate_user!
+  skip_before_filter :authenticate_user!, :only => [:index, :show]
+
   # GET /datasets
   # GET /datasets.json
   def index
@@ -41,6 +44,8 @@ class DatasetsController < ApplicationController
   # POST /datasets.json
   def create
     @dataset = Dataset.new(params[:dataset])
+    @user = User.find(current_user)
+    @dataset.user_id = @user.id
 
     respond_to do |format|
       if @dataset.save
