@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     end
     self.current_user = @auth.user
 
-    render :text => "Welcome, #{current_user.name}."
+    redirect_to dashboard_url
 
   end
 

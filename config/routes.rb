@@ -7,6 +7,10 @@ Rhetoricio::Application.routes.draw do
   match '/auth/failure', to: 'sessions#failure'
   get '/logout', to: 'sessions#destroy', as: 'logout'
 
+  get '/dashboard', to: 'user#index', as: 'dashboard'
+  get '/dashboard/info', to: 'user#edit', as: 'edit_profile'
+  post '/dashboard', to: 'user#update', as: 'update_profile'
+
   resources :datasets
 
   root to: 'datasets#index'
